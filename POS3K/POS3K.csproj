@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{331AD076-9325-402D-8B8B-82B2181FCE44}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>POS3K</RootNamespace>
+    <AssemblyName>POS3K</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>POS3K.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="POS.Devices.OPOSCashDrawer, Version=1.14.0.0, Culture=neutral, PublicKeyToken=25db91e28cd23c98, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\OPOS\OposFor.NET\POS.Devices.OPOSCashDrawer.dll</HintPath>
+    </Reference>
+    <Reference Include="POS.Devices.OPOSKeylock, Version=1.14.0.0, Culture=neutral, PublicKeyToken=25db91e28cd23c98, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\OPOS\OposFor.NET\POS.Devices.OPOSKeylock.dll</HintPath>
+    </Reference>
+    <Reference Include="POS.Devices.OPOSLineDisplay, Version=1.14.0.0, Culture=neutral, PublicKeyToken=25db91e28cd23c98, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\OPOS\OposFor.NET\POS.Devices.OPOSLineDisplay.dll</HintPath>
+    </Reference>
+    <Reference Include="POS.Devices.OPOSMSR, Version=1.14.0.0, Culture=neutral, PublicKeyToken=25db91e28cd23c98, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\OPOS\OposFor.NET\POS.Devices.OPOSMSR.dll</HintPath>
+    </Reference>
+    <Reference Include="POS.Devices.OPOSPOSKeyboard, Version=1.14.0.0, Culture=neutral, PublicKeyToken=25db91e28cd23c98, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\OPOS\OposFor.NET\POS.Devices.OPOSPOSKeyboard.dll</HintPath>
+    </Reference>
+    <Reference Include="POS.Devices.OPOSPOSPrinter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=25db91e28cd23c98, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\OPOS\OposFor.NET\POS.Devices.OPOSPOSPrinter.dll</HintPath>
+    </Reference>
+    <Reference Include="POS.Devices.OPOSScanner, Version=1.14.0.0, Culture=neutral, PublicKeyToken=25db91e28cd23c98, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\OPOS\OposFor.NET\POS.Devices.OPOSScanner.dll</HintPath>
+    </Reference>
+    <Reference Include="POS.Devices.OPOSToneIndicator, Version=1.14.0.0, Culture=neutral, PublicKeyToken=25db91e28cd23c98, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\OPOS\OposFor.NET\POS.Devices.OPOSToneIndicator.dll</HintPath>
+    </Reference>
+    <Reference Include="POS.Devices.Opos_Constants, Version=1.14.0.0, Culture=neutral, PublicKeyToken=25db91e28cd23c98, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files (x86)\OPOS\OposFor.NET\POS.Devices.Opos_Constants.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ActiveCheck.cs" />
+    <Compile Include="ActivePosition.cs" />
+    <Compile Include="ChequesDBF.cs" />
+    <Compile Include="Coupon.cs" />
+    <Compile Include="CouponsDBF.cs" />
+    <Compile Include="Display.cs" />
+    <Compile Include="DLLClass.cs" />
+    <Compile Include="Drawer.cs" />
+    <Compile Include="Exchange.cs" />
+    <Compile Include="Fiscal.cs" />
+    <Compile Include="FloatingPointReset.cs" />
+    <Compile Include="GoodsDBF.cs" />
+    <Compile Include="InterceptKeys.cs" />
+    <Compile Include="InvertColorEffect.cs" />
+    <Compile Include="POSKeyboard.cs" />
+    <Compile Include="Loyalty.cs" />
+    <Compile Include="LoyaltyDBF.cs" />
+    <Compile Include="MonochromeEffect.cs" />
+    <Compile Include="Printer.cs" />
+    <Compile Include="ProgressBarWindow.xaml.cs">
+      <DependentUpon>ProgressBarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scanner.cs" />
+    <Compile Include="Sine1Effect.cs" />
+    <Compile Include="Transition_Ripple_modifiedEffect.cs" />
+    <Compile Include="Transition_Ripple_modified_with_MonochromeEffect.cs" />
+    <Compile Include="Vars.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window2.xaml.cs">
+      <DependentUpon>Window2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowAutorization.xaml.cs">
+      <DependentUpon>WindowAutorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowChecks.xaml.cs">
+      <DependentUpon>WindowChecks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowDatesInterval.xaml.cs">
+      <DependentUpon>WindowDatesInterval.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowKeys.xaml.cs">
+      <DependentUpon>WindowKeys.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowNumbersInterval.xaml.cs">
+      <DependentUpon>WindowNumbersInterval.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowRegistration.xaml.cs">
+      <DependentUpon>WindowRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowService.xaml.cs">
+      <DependentUpon>WindowService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowSettings.xaml.cs">
+      <DependentUpon>WindowSettings.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ProgressBarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowAutorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowChecks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowDatesInterval.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowKeys.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowNumbersInterval.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

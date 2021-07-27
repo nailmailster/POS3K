@@ -1,0 +1,147 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="POS3K.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DBF" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Registan\POS\Bases</Value>
+    </Setting>
+    <Setting Name="TAX" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\datafile.tax</Value>
+    </Setting>
+    <Setting Name="CompanyName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">OOO STORE PLUS</Value>
+    </Setting>
+    <Setting Name="CompanyAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">M.Baraka, 2 INN  301526031</Value>
+    </Setting>
+    <Setting Name="INN" Type="System.String" Scope="User">
+      <Value Profile="(Default)">000301526031</Value>
+    </Setting>
+    <Setting Name="SerialNumber" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="POSNumber" Type="System.String" Scope="User">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
+    <Setting Name="VAT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\datafile.vat</Value>
+    </Setting>
+    <Setting Name="InPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Registan\POS\In</Value>
+    </Setting>
+    <Setting Name="RegularFont" Type="System.String" Scope="User">
+      <Value Profile="(Default)">101</Value>
+    </Setting>
+    <Setting Name="BoldFont" Type="System.String" Scope="User">
+      <Value Profile="(Default)">103</Value>
+    </Setting>
+    <Setting Name="btn1Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">СБРОС</Value>
+    </Setting>
+    <Setting Name="btn2Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="btn3Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="btn4Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">21080951</Value>
+    </Setting>
+    <Setting Name="btn5Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">47800922</Value>
+    </Setting>
+    <Setting Name="btn6Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">25002270</Value>
+    </Setting>
+    <Setting Name="btn7Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4780019650033</Value>
+    </Setting>
+    <Setting Name="btn8Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28005513</Value>
+    </Setting>
+    <Setting Name="btn9Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="btn10Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28007562</Value>
+    </Setting>
+    <Setting Name="btn11Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28008888</Value>
+    </Setting>
+    <Setting Name="btn12Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">27001912</Value>
+    </Setting>
+    <Setting Name="btn13Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">47801073</Value>
+    </Setting>
+    <Setting Name="btn14Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">22355080</Value>
+    </Setting>
+    <Setting Name="btn15Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">21004834</Value>
+    </Setting>
+    <Setting Name="btn16Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28000952</Value>
+    </Setting>
+    <Setting Name="btn17Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="btn18Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">21003936</Value>
+    </Setting>
+    <Setting Name="btn19Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">21011641</Value>
+    </Setting>
+    <Setting Name="btn20Barcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">21011979</Value>
+    </Setting>
+    <Setting Name="LoyaltyPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Registan\POS\Loyal</Value>
+    </Setting>
+    <Setting Name="POSName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SymbolsPerLine" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UseShaderInAutonomode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DisplayCodePage" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UseSystemTone" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UseWindowsDriverForPrinting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LeftMargin" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="RightMargin" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="DescriptionWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SumWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="FontB" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SalesOutPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SalesOutBackupPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UseOPOSScanner" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ShutDownTime" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

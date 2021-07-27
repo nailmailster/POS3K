@@ -1,0 +1,607 @@
+﻿<Window x:Class="POS3K.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POS3K"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="$$$ €€€ £££ ¥¥¥ ¤¤¤" Height="600" Width="800" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Name="ActiveCheckWindow"
+        x:FieldModifier="public"
+        KeyUp="Window_KeyUp"
+        Closed="ActiveCheckWindow_Closed"
+        Topmost="True"
+        LostFocus="ActiveCheckWindow_LostFocus"
+        PreviewLostKeyboardFocus="ActiveCheckWindow_PreviewLostKeyboardFocus"
+        xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions">
+    <!--<Window.DataContext>
+        <local:ActivePosition/>
+    </Window.DataContext>-->
+    <Window.Resources>
+        <Style TargetType="Label" x:Key="BasePanelLabels">
+            <Setter Property="Margin" Value="0 0 3 0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="ActivePanelLabel" BasedOn="{StaticResource BasePanelLabels}">
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#000025"/>
+            <!--<Setter Property="Effect">
+                <Setter.Value>
+                    <BlurEffect Radius="1"/>
+                </Setter.Value>
+            </Setter>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="ActiveAutonomodePanelLabel" BasedOn="{StaticResource BasePanelLabels}">
+            <Setter Property="Foreground" Value="#252525"/>
+            <Setter Property="Background" Value="#000025"/>
+            <!--<Setter Property="Effect">
+                <Setter.Value>
+                    <BlurEffect Radius="1"/>
+                </Setter.Value>
+            </Setter>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="InactivePanelLabel" BasedOn="{StaticResource BasePanelLabels}">
+            <Setter Property="Foreground" Value="#252525"/>
+            <Setter Property="Background" Value="#151515"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <BlurEffect Radius="3"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabel">
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="3 0 3 0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#212121"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelText" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelCenteredText" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelNumber" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelTextCancelled" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Background" Value="#212100"/>
+            <!--<Setter Property="Background" Value="#210000"/>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelCenteredTextCancelled" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#212100"/>
+            <!--<Setter Property="Background" Value="#210000"/>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelCenteredTextCancelQty" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#212100"/>
+            <Setter Property="Foreground" Value="Yellow"/>
+            <!--<Setter Property="Background" Value="#210000"/>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelCenteredTextCancelBigQty" BasedOn="{StaticResource GridLabelCenteredTextCancelQty}">
+            <!--<Setter Property="HorizontalContentAlignment" Value="Center"/>-->
+            <Setter Property="Background" Value="AliceBlue"/>
+            <!--<Setter Property="Foreground" Value="Yellow"/>-->
+            <!--<Setter Property="Background" Value="#210000"/>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelNumberCancelled" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="Background" Value="#212100"/>
+            <!--<Setter Property="Background" Value="#210000"/>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelTextHuge" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Background" Value="#000021"/>
+            <Setter Property="Foreground" Value="Orange"/>
+            <!--<Setter Property="Background" Value="#210000"/>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelCenteredTextHuge" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#000021"/>
+            <Setter Property="Foreground" Value="Orange"/>
+            <!--<Setter Property="Background" Value="#210000"/>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelCenteredTextHugeQty" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#000021"/>
+            <Setter Property="Foreground" Value="Yellow"/>
+            <Setter Property="Foreground" Value="Orange"/>
+            <!--<Setter Property="Background" Value="#210000"/>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelCenteredTextHugeBigQty" BasedOn="{StaticResource GridLabelCenteredTextCancelQty}">
+            <!--<Setter Property="HorizontalContentAlignment" Value="Center"/>-->
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="Foreground" Value="Orange"/>
+            <!--<Setter Property="Foreground" Value="Yellow"/>-->
+            <!--<Setter Property="Background" Value="#210000"/>-->
+        </Style>
+
+        <Style TargetType="Label" x:Key="GridLabelNumberHuge" BasedOn="{StaticResource GridLabel}">
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="Background" Value="#000021"/>
+            <Setter Property="Foreground" Value="Orange"/>
+            <!--<Setter Property="Background" Value="#210000"/>-->
+        </Style>
+
+        <Style TargetType="ScrollBar">
+            <Setter Property="Width" Value="5"/>
+            <Setter Property="MinWidth" Value="5"/>
+            <Setter Property="Background" Value="#555555"/>
+        </Style>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation From="0" To="1"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:00.5"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="LostFocus">
+            <BeginStoryboard>
+                <Storyboard>
+                    <BooleanAnimationUsingKeyFrames>
+                        <DiscreteBooleanKeyFrame KeyTime="0"
+                                                 Value="True"
+                                                 Storyboard.Target="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                                                 Storyboard.TargetProperty="Topmost"/>
+                    </BooleanAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Canvas Name="canvasMain" Background="#252525" Width="800" Height="600">
+        <Canvas Name="canvasBackground" Background="Sienna" Width="800" Height="600" Opacity="0" Canvas.Left="0" Canvas.Top="0">
+        </Canvas>
+        <Label Name="labelGotDiscount" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Hidden"
+            Content="DISCOUNT"
+            Background="Transparent" Opacity="0.9"
+            Width="800" Height="600"
+            FontSize="150" FontWeight="ExtraBold" Foreground="Sienna"
+            Panel.ZIndex="11">
+            <!--<Label.Effect>
+                <BlurEffect Radius="7"/>
+            </Label.Effect>-->
+        </Label>
+        <Label Name="labelGotError" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Hidden"
+            Content="ERROR"
+            Background="Transparent" Opacity="0.5"
+            Width="800" Height="600"
+            FontSize="50" FontWeight="ExtraBold" Foreground="White"
+            Panel.ZIndex="101">
+            <Label.Effect>
+                <DropShadowEffect
+                    ShadowDepth="6"
+                    Direction="315"
+                    Color="White"
+                    Opacity="0.5"
+                    BlurRadius="15">
+                </DropShadowEffect>
+            </Label.Effect>
+        </Label>
+        <Border Name="borderCoupon"
+                Canvas.Left="250" Canvas.Top="250"
+                Width="300" Height="100"
+                Panel.ZIndex="100"
+                CornerRadius="5"
+                BorderBrush="#FF545D6A"
+                BorderThickness="1"
+                Background="#252525"
+                FocusManager.FocusedElement="{Binding ElementName=textBoxCouponCode}"
+                Visibility="Hidden">
+            <Border.Effect>
+                <DropShadowEffect
+                    ShadowDepth="6"
+                    Direction="315"
+                    Color="DarkGray"
+                    Opacity="0.5"
+                    BlurRadius="15">
+                </DropShadowEffect>
+            </Border.Effect>
+            <StackPanel
+                Margin="3"
+                Orientation="Vertical"
+                Panel.ZIndex="101"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Width="280"
+                Visibility="Visible">
+                <Label Content="Код карты лояльности:" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" Margin="5"/>
+                <TextBox Name="textBoxCouponCode"
+                    PreviewKeyDown="TextBoxCouponCode_PreviewKeyDown" PreviewTextInput="TextBoxCouponCode_PreviewTextInput"
+                    KeyUp="TextBoxCouponCode_KeyUp"
+                    FontSize="20"
+                    Foreground="White"
+                    Background="#454545"
+                    HorizontalContentAlignment="Center"
+                    Margin="25 5 25 25"/>
+            </StackPanel>
+        </Border>
+        <Border Name="borderAnnulation"
+                Canvas.Left="275" Canvas.Top="250"
+                Width="250" Height="100"
+                Panel.ZIndex="100"
+                CornerRadius="5"
+                BorderBrush="#FF545D6A"
+                BorderThickness="1"
+                Background="#550000"
+                FocusManager.FocusedElement="{Binding ElementName=buttonAnnulateYes}"
+                Visibility="Hidden">
+            <Border.Effect>
+                <DropShadowEffect
+                    ShadowDepth="6"
+                    Direction="315"
+                    Color="DarkGray"
+                    Opacity="0.5"
+                    BlurRadius="15">
+                </DropShadowEffect>
+            </Border.Effect>
+            <StackPanel
+                Margin="3"
+                Orientation="Vertical"
+                Panel.ZIndex="101"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Width="250"
+                Visibility="Visible">
+                <Label Content="Аннулировать чек?" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" Margin="5"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Name="buttonAnnulateYes"
+                            IsDefault="True"
+                            Click="ButtonAnnulateYes_Click"
+                            Width="75"
+                            HorizontalAlignment="Left"
+                            FontSize="20"
+                            Foreground="White"
+                            Background="#454545"
+                            HorizontalContentAlignment="Center"
+                            Content="Да"
+                            Margin="25 5 25 25"/>
+                    <Button Name="buttonAnnulateNo"
+                            IsCancel="True"
+                            Click="ButtonAnnulateNo_Click"
+                            Width="75"
+                            HorizontalAlignment="Right"
+                            FontSize="20"
+                            Foreground="White"
+                            Background="#454545"
+                            HorizontalContentAlignment="Center"
+                            Content="Нет"
+                            Margin="25 5 25 25"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <DockPanel Name="dockPanelMain" LastChildFill="True" Width="800" Height="600">
+            <DockPanel DockPanel.Dock="Top">
+                <Label Content="OOO &quot;STORE PLUS&quot; © 2019 All rights reserved" Background="#454545" Foreground="LightGray" HorizontalContentAlignment="Center" DockPanel.Dock="Top"/>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Name="labelReadyMode" Content="СВОБОДНА" Style="{StaticResource ActivePanelLabel}"/>
+                        <Label Name="labelSaleMode" Content="ПРОДАЖА" Style="{StaticResource InactivePanelLabel}"/>
+                        <Label Name="labelReturnMode" Content="ВОЗВРАТ" Style="{StaticResource InactivePanelLabel}"/>
+                        <Label Name="labelCancelMode" Content="ОТМЕНА" Style="{StaticResource InactivePanelLabel}"/>
+                        <Label Name="labelTotalMode" Content="ИТОГ" Style="{StaticResource InactivePanelLabel}"/>
+                        <Label Name="labelPaymentMode" Content="ОПЛАТА" Style="{StaticResource InactivePanelLabel}"/>
+                        <Label Name="labelCouponMode" Content="ЛОЯЛЬНОСТЬ" Style="{StaticResource InactivePanelLabel}"/>
+                        <Label Name="labelVoucherMode" Content="ВАУЧЕР" Style="{StaticResource InactivePanelLabel}" Visibility="Collapsed"/>
+                        <Label Name="labelAutonoMode" Content="AUTONOMODE" Style="{StaticResource InactivePanelLabel}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 3 3 6">
+                        <Label Name="labelPaymentType" FontSize="16" Foreground="White" BorderBrush="Gray" BorderThickness="1 1 0 1" VerticalContentAlignment="Center" Margin="0" Background="SlateGray" Visibility="Collapsed">
+                            НАЛ
+                        </Label>
+                        <Label FontSize="16" Foreground="White" BorderThickness="1" VerticalContentAlignment="Center" Margin="0" Content="" Width="1">
+                        </Label>
+                        <StackPanel Name="panelQuantity" Orientation="Horizontal" Visibility="Collapsed" Margin="0 0 3 0" VerticalAlignment="Center">
+                            <Label Name="labelQuantityHeader" FontSize="16" Foreground="White" BorderBrush="Gray" BorderThickness="1 1 0 1" VerticalContentAlignment="Center" Margin="0" Background="SlateGray">
+                                КОЛ-ВО
+                            </Label>
+                            <Label Name="labelQuantity" FontSize="16" Foreground="White" BorderBrush="Gray" BorderThickness="0 1 1 1" Content="{Binding Quantity}" VerticalContentAlignment="Center" Margin="0 0 5 0"/>
+                        </StackPanel>
+                        <StackPanel Name="panelBarcode" Orientation="Horizontal" Visibility="Collapsed" Margin="0 0 3 0" VerticalAlignment="Center">
+                            <Label Name="labelBarcodeHeader" FontSize="16" Foreground="White" BorderBrush="Gray" BorderThickness="1 1 0 1" VerticalContentAlignment="Center" Margin="0" Background="SlateGray">
+                                КОД
+                            </Label>
+                            <Label Name="labelBarcode" FontSize="16" Foreground="White" BorderBrush="Gray" BorderThickness="0 1 1 1" Content="{Binding Barcode}" VerticalContentAlignment="Center" Margin="0 0 5 0"/>
+                        </StackPanel>
+                        <StackPanel Name="panelDescription" Orientation="Horizontal" Visibility="Collapsed" Margin="0 0 3 0" VerticalAlignment="Center">
+                            <Label Name="labelDescriptionHeader" FontSize="16" Foreground="White" BorderBrush="Gray" BorderThickness="1 1 0 1" VerticalContentAlignment="Center" Margin="0" Background="SlateGray">
+                                НАИМ-ИЕ
+                            </Label>
+                            <Label Name="labelDescriptionWin2" FontSize="16" Foreground="White" BorderBrush="Gray" BorderThickness="0 1 1 1" Content="{Binding Description}" VerticalContentAlignment="Center" Margin="0 0 5 0"/>
+                        </StackPanel>
+                        <!--<Label Name="labelInvitation"
+                               VerticalContentAlignment="Center"
+                               Margin="0 0 3 0"
+                               Padding="0"
+                               Foreground="Yellow"
+                               FontSize="16"
+                               Content="ВВЕДИТЕ КОД КУПОНА:"
+                               Visibility="Collapsed"/>-->
+                        <Label Name="labelPositionBarcodeName"
+                               VerticalContentAlignment="Center"
+                               Margin="0"
+                               Padding="0"
+                               Foreground="White"
+                               FontSize="16"
+                               x:FieldModifier="public"
+                               Content="{Binding Info, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        </Label>
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Bottom" Background="#454545">
+                <StackPanel Orientation="Horizontal">
+                    <Label Foreground="White" Content="КАССИР: " VerticalContentAlignment="Center" Padding="0"/>
+                    <Label Name="labelCashierName" Foreground="LightGray" VerticalAlignment="Center" Padding="0"/>
+                </StackPanel>
+            </DockPanel>
+            <Grid DockPanel.Dock="Top" Background="#151515" ScrollViewer.CanContentScroll="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.42*"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel LastChildFill="False">
+                    <Grid Name="gridReceiptHeader" Grid.Column="0" DockPanel.Dock="Top" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="400*"/>
+                            <ColumnDefinition Width="75*"/>
+                            <ColumnDefinition Width="110*"/>
+                            <ColumnDefinition Width="125*"/>
+                            <ColumnDefinition Width="85*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Content="№"        FontSize="13" HorizontalContentAlignment="Center" Background="#131313" Foreground="Gray" BorderBrush="#353535" Padding="0 2 0 2" Margin="0 0 1 0"/>
+                        <Label Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Content="НАИМЕНОВАНИЕ"        FontSize="13" HorizontalContentAlignment="Center" Background="#131313" Foreground="Gray" BorderBrush="#353535" Padding="0 2 0 2" Margin="0 0 1 0"/>
+                        <Label Grid.Column="2" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Content="КОЛ-ВО"              FontSize="13" HorizontalContentAlignment="Center" Background="#131313" Foreground="Gray" BorderBrush="#353535" Padding="0 2 0 2" Margin="1 0 1 0"/>
+                        <Label Grid.Column="3" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Content="ЦЕНА"                FontSize="13" HorizontalContentAlignment="Center" Background="#131313" Foreground="Gray" BorderBrush="#353535" Padding="0 2 0 2" Margin="1 0 1 0"/>
+                        <Label Grid.Column="4" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Content="СУММА"               FontSize="13" HorizontalContentAlignment="Center" Background="#131313" Foreground="Gray" BorderBrush="#353535" Padding="0 2 0 2" Margin="1 0 1 0"/>
+                        <Label Grid.Column="5" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Content="СКИДКА"              FontSize="13" HorizontalContentAlignment="Center" Background="#131313" Foreground="Gray" Padding="0 2 0 2" Margin="1 0 0 0"/>
+                    </Grid>
+                    <ScrollViewer Name="scrollViewerGrid" VerticalScrollBarVisibility="Auto" DockPanel.Dock="Top">
+                        <Grid Name="gridReceipt" Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35*"/>
+                                <ColumnDefinition Width="400*"/>
+                                <ColumnDefinition Width="75*"/>
+                                <ColumnDefinition Width="110*"/>
+                                <ColumnDefinition Width="125*"/>
+                                <ColumnDefinition Width="85*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                        </Grid>
+                    </ScrollViewer>
+                </DockPanel>
+                <Canvas VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" MinWidth="235" Height="483" Margin="0 1 0 0">
+                    <Canvas.Background>
+                        <LinearGradientBrush EndPoint="1, 1.5" StartPoint="0, 0">
+                            <GradientStop Color="#303030" Offset="0"/>
+                            <GradientStop Color="#101010" Offset="0.5"/>
+                        </LinearGradientBrush>
+                    </Canvas.Background>
+                    <Border BorderBrush="Gray" BorderThickness="1 1 1 1" Height="484" Width="235">
+                    </Border>
+                    <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Top" HorizontalAlignment="Right"
+                                Grid.Column="1"
+                                MinWidth="235"
+                                Panel.ZIndex="11">
+                        <Border BorderBrush="Gray" BorderThickness="1 0 1 0">
+                            <Label Name="labelTotalHeader" Foreground="LightGray" FontSize="20" FontFamily="Arial Rounded MT" FontWeight="Bold"
+                                   Content="ИТОГО" HorizontalContentAlignment="Center" Padding="0"/>
+                        </Border>
+                        <Label Name="labelTotal"
+                               Foreground="LightGray" Background="#353535"
+                               FontSize="42" FontFamily="Digital-7 Mono" FontStyle="Normal" FontWeight="Bold"
+                               HorizontalContentAlignment="Center"
+                               Padding="0"
+                               BorderBrush="Gray" BorderThickness="1 0 1 0"
+                               Panel.ZIndex="11"
+                               Content="{Binding TotalSum, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        </Label>
+                    </StackPanel>
+
+                    <StackPanel Name="panelCoupon" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" MinWidth="185" Visibility="Hidden" Margin="0 100 0 0">
+                        <Border BorderBrush="Gray" BorderThickness="1 1 1 0">
+                            <Label Name="labelCouponSumHeader" Content="СКИДКА ПО КУПОНУ" Foreground="LightGray" FontSize="16" FontFamily="Arial Rounded MT" FontWeight="Bold" HorizontalContentAlignment="Center" Padding="0"/>
+                        </Border>
+                        <Label Name="labelCouponSum" Background="#550000" Foreground="White" FontSize="42" FontFamily="Digital-7 Mono" FontStyle="Normal" FontWeight="Bold" HorizontalContentAlignment="Center" Padding="0" BorderBrush="Gray" BorderThickness="1"
+                               Content="{Binding CouponSum, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        </Label>
+                    </StackPanel>
+
+                    <StackPanel Name="panelDiscount" Orientation="Vertical"
+                                VerticalAlignment="Top" HorizontalAlignment="Right"
+                                Grid.Column="1"
+                                MinWidth="235"
+                                Visibility="Hidden"
+                                Margin="0 65 0 0"
+                                Panel.ZIndex="10">
+                        <Border BorderBrush="Gray" BorderThickness="1 0 1 0">
+                            <Label Name="labelDiscountSumHeader"
+                                   Content="СКИДКА"
+                                   Foreground="Sienna"
+                                   FontSize="20" FontFamily="Arial Rounded MT" FontWeight="Bold"
+                                   HorizontalContentAlignment="Center"
+                                   Padding="0"
+                                   Panel.ZIndex="10"/>
+                        </Border>
+                        <Label Name="labelDiscountSum"
+                               Foreground="Sienna" Background="#353535"
+                               FontSize="42" FontFamily="Digital-7 Mono" FontStyle="Normal" FontWeight="Bold"
+                               HorizontalContentAlignment="Center"
+                               Padding="0"
+                               BorderBrush="Gray" BorderThickness="1 0 1 0"
+                               Panel.ZIndex="10"
+                               Content="{Binding DiscountSum, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        </Label>
+                    </StackPanel>
+
+                    <StackPanel Name="panelTopay" Orientation="Vertical"
+                                VerticalAlignment="Top" HorizontalAlignment="Right"
+                                Grid.Column="1"
+                                MinWidth="235"
+                                Visibility="Hidden"
+                                Margin="0 129 0 0"
+                                Panel.ZIndex="9">
+                        <Border BorderBrush="Gray" BorderThickness="1 0 1 0">
+                            <Label Name="labelTopayHeader"
+                                   Content="К ОПЛАТЕ" 
+                                   Foreground="LightGray"
+                                   FontSize="20" FontFamily="Arial Rounded MT" FontWeight="Bold"
+                                   HorizontalContentAlignment="Center"
+                                   Padding="0"
+                                   Panel.ZIndex="9"/>
+                        </Border>
+                        <Label Name="labelTopaySum"
+                               Foreground="LightGray" Background="#353535"
+                               FontSize="42" FontFamily="Digital-7 Mono" FontStyle="Normal" FontWeight="Bold"
+                               HorizontalContentAlignment="Center"
+                               Padding="0"
+                               BorderBrush="Gray" BorderThickness="1 0 1 0"
+                               Panel.ZIndex="9"
+                               Content="{Binding TopaySum, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        </Label>
+                    </StackPanel>
+
+                    <StackPanel Name="panelAcceptedInCash" Orientation="Vertical" 
+                                Visibility="Hidden"
+                                VerticalAlignment="Top" HorizontalAlignment="Right"
+                                Grid.Column="1"
+                                MinWidth="235" Margin="0 195 0 0"
+                                Panel.ZIndex="8">
+                        <Label Name="labelAcceptedInCashHeader"
+                                Content="НАЛИЧНЫМИ"
+                                Foreground="YellowGreen"
+                                FontSize="16" FontFamily="Arial Rounded MT" FontWeight="Bold"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Padding="0"
+                                Panel.ZIndex="8"/>
+                        <Label Name="labelAcceptedInCash"
+                               Foreground="YellowGreen" Background="#050505"
+                               FontSize="32" FontFamily="Digital-7 Mono" FontStyle="Normal" FontWeight="Bold"
+                               HorizontalContentAlignment="Center"
+                               Padding="0" BorderBrush="Gray" BorderThickness="1 0 1 0"
+                               Panel.ZIndex="8"
+                               Content="{Binding CashSum, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        </Label>
+                    </StackPanel>
+                    <StackPanel Name="panelAcceptedByCard" Orientation="Vertical"
+                                Visibility="Hidden"
+                                VerticalAlignment="Top" HorizontalAlignment="Right"
+                                Grid.Column="1"
+                                MinWidth="235"
+                                Margin="0 245 0 0"
+                                Panel.ZIndex="7">
+                        <Label Name="labelAcceptedByCardHeader"
+                            Content="КАРТОЙ"
+                            Foreground="YellowGreen"
+                            FontSize="16" FontFamily="Arial Rounded MT" FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Padding="0"
+                            Panel.ZIndex="7"/>
+                        <Label Name="labelAcceptedByCard"
+                            Foreground="YellowGreen" Background="#050505"
+                            FontSize="32" FontFamily="Digital-7 Mono" FontStyle="Normal" FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="0"
+                            BorderBrush="Gray" BorderThickness="1 0 1 0"
+                            Panel.ZIndex="7"
+                            Content="{Binding CardSum, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        </Label>
+                    </StackPanel>
+                    <StackPanel Name="panelChange" Orientation="Vertical"
+                                Visibility="Hidden"
+                                VerticalAlignment="Top" HorizontalAlignment="Right"
+                                Grid.Column="1"
+                                MinWidth="235"
+                                Margin="0 295 0 0"
+                                Panel.ZIndex="6">
+                        <Label Name="labelChangeHeader"
+                            Content="НЕДОПЛАТА"
+                            Foreground="YellowGreen"
+                            FontSize="16" FontFamily="Arial Rounded MT" FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Padding="0"
+                            Panel.ZIndex="6"/>
+                        <Label Name="labelChange"
+                            Foreground="YellowGreen" Background="#050505"
+                            FontSize="32" FontFamily="Digital-7 Mono" FontStyle="Normal" FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="0"
+                            BorderBrush="Gray" BorderThickness="1 0 1 0"
+                            Panel.ZIndex="6"
+                            Content="{Binding ChangeSum, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        </Label>
+                    </StackPanel>
+                    <StackPanel Name="panelLoyalty" Orientation="Vertical"
+                                Visibility="Hidden"
+                                VerticalAlignment="Top" HorizontalAlignment="Right"
+                                Grid.Column="1"
+                                MinWidth="235"
+                                Margin="0 395 0 0"
+                                Panel.ZIndex="6">
+                        <Label Name="labelLoyaltyHeader"
+                            Content="ДОСТУПНАЯ СКИДКА"
+                            Foreground="LightGray"
+                            FontSize="16" FontFamily="Arial Rounded MT" FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Padding="0"
+                            Panel.ZIndex="6"/>
+                        <Label Name="labelLoyaltyHeader2"
+                            Content="ПО КАРТЕ ЛОЯЛЬНОСТИ"
+                            Foreground="LightGray"
+                            FontSize="16" FontFamily="Arial Rounded MT" FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Padding="0"
+                            Panel.ZIndex="6"/>
+                        <Label Name="labelLoyalty"
+                            Foreground="LightGray" Background="#050505"
+                            FontSize="32" FontFamily="Digital-7 Mono" FontStyle="Normal" FontWeight="Bold"
+                            HorizontalContentAlignment="Center"
+                            Padding="0"
+                            Margin="0 10 0 0"
+                            BorderBrush="Gray" BorderThickness="1 0 1 0"
+                            Panel.ZIndex="6"
+                            Content="{Binding LoyaltySum, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        </Label>
+                    </StackPanel>
+                </Canvas>
+            </Grid>
+        </DockPanel>
+    </Canvas>
+</Window>
+<!--Content="{Binding Source={x:Static local:ActiveCheck.TotalSum}}">-->

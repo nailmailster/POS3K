@@ -1,0 +1,28 @@
+﻿<Window x:Class="POS3K.WindowChecks"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POS3K"
+        mc:Ignorable="d"
+        Title="Просмотр чеков" Height="600" Width="800" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        LostFocus="Window_LostFocus">
+    <Border CornerRadius="0" BorderBrush="#FF545D6A" BorderThickness="0" Background="#252525">
+        <DockPanel LastChildFill="False">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="3">
+                <DataGrid Name="dataGridChecks"
+                          Height="564" Width="360"
+                          Foreground="Black"
+                          IsReadOnly="True" SelectionChanged="DataGridChecks_SelectionChanged"/>
+                <DataGrid Name="dataGridCheckGoods"
+                          Height="564" Width="435"
+                          IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="5">
+                <Button Name="buttonBack" Content="Вернуться" Click="ButtonBack_Click" IsCancel="True"/>
+            </StackPanel>
+        </DockPanel>
+    </Border>
+</Window>
